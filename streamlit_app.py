@@ -5,7 +5,7 @@ from langchain_openai import ChatOpenAI
 
 st.title('GPT Translator')
 
-languages = ["", "German", "English", "Spanish", "French", "Chinese","German (Bavarian accent)","German (Swiss accent)", "Arabic", "Russian", "Portuguese", "Japanese", "Italian", "Hindi", "Bengali", "Urdu", "Korean", "Turkish", "Dutch", "Polish", "Vietnamese", "Thai", "Persian", "Indonesian", "Greek", "Swedish", "Czech", "Romanian", "Hungarian", "Finnish", "Danish", "Norwegian", "Hebrew", "Malay", "Ukrainian", "Slovak", "Croatian", "Serbian", "Bulgarian", "Lithuanian", "Latvian", "Estonian", "Slovenian", "Macedonian", "Albanian", "Maltese", "Icelandic", "Farsi", "Swahili", "Kurdish", "Pashto", "Tagalog"]
+languages = ["", "German", "English", "Spanish", "French", "Chinese","German (strong Bavarian accent)","German (strong Swiss accent)", "Arabic", "Russian", "Portuguese", "Japanese", "Italian", "Hindi", "Bengali", "Urdu", "Korean", "Turkish", "Dutch", "Polish", "Vietnamese", "Thai", "Persian", "Indonesian", "Greek", "Swedish", "Czech", "Romanian", "Hungarian", "Finnish", "Danish", "Norwegian", "Hebrew", "Malay", "Ukrainian", "Slovak", "Croatian", "Serbian", "Bulgarian", "Lithuanian", "Latvian", "Estonian", "Slovenian", "Macedonian", "Albanian", "Maltese", "Icelandic", "Farsi", "Swahili", "Kurdish", "Pashto", "Tagalog"]
 
 openai_api_key = st.sidebar.text_input('OpenAI API Key:', type='password')
 
@@ -20,7 +20,7 @@ selected_lang = st.sidebar.selectbox(
 def generate_translation(input_text):
     chat = ChatOpenAI(temperature=0, openai_api_key=openai_api_key)
     messages = [
-        SystemMessage(content=f"You are a translation expert. Translate the given text into {selected_lang}. Do not change the meaning of the text. Only return the translated text."),
+        SystemMessage(content=f"You are a translation expert. Translate the given text into {selected_lang}. Only return the translated text."),
         HumanMessage(content=input_text)
     ]
     info_placeholder = st.empty()
