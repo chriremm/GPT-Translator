@@ -45,7 +45,7 @@ with st.container():
 
 with st.container():
     if not selected_lang  or selected_lang == languages[0]:
-        st.warning('Please select two different languages!', icon='⚠️')
+        st.warning('Please select a language!', icon='⚠️')
     
             
 
