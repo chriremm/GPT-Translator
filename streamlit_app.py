@@ -42,7 +42,7 @@ def generate_translation(input_text):
     chat = ChatOpenAI(temperature=0, openai_api_key=openai_api_key)
     style = select_style(selected_style)
     messages = [
-        SystemMessage(content=f"You are a translation expert. Translate the given text into {selected_lang}. Only return the translated text.{style}"),
+        SystemMessage(content=f"You are a translation expert. Translate the given text into {selected_lang}. Only return the translated text.{style} When the input is blank, just ask for an input."),
         HumanMessage(content=input_text)
     ]
     info_placeholder = st.empty()
