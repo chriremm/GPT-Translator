@@ -1,4 +1,3 @@
-import asyncio
 import streamlit as st
 import streamlit as st
 from langchain_core.messages import HumanMessage, SystemMessage, AIMessage
@@ -39,7 +38,7 @@ def select_style(style):
           return "Write in a relaxed and personal tone, including informal expressions and slang where appropriate. Reflect the way people communicate in everyday conversations. This style is suitable for texts aimed at establishing a personal connection with the reader or addressing topics in a light and engaging manner."
 
 
-async def generate_translation(input_text):
+def generate_translation(input_text):
     chat = ChatOpenAI(temperature=0, openai_api_key=openai_api_key)
     style = select_style(selected_style)
     messages = [
@@ -47,15 +46,10 @@ async def generate_translation(input_text):
         HumanMessage(content=input_text)
     ]
     info_placeholder = st.empty()
-    info_placeholder2 = st.empty()
     answ = ""
-    answ2 = ""
-    async for chunk in chat.astream(messages):
+    for chunk in chat.stream(messages):
         answ += chunk.content
         info_placeholder.info(answ)
-    async for chunk in chat.astream(messages):
-        answ2 += chunk.content
-        info_placeholder2.info(answ2)
     # st.info(messages)
 
 
