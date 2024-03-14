@@ -17,9 +17,9 @@ selected_lang = st.sidebar.selectbox(
     index = 0
 )
 selected_style = st.sidebar.selectbox(
-    "Select language:",
+    "Select style:",
     languages,
-    key = "selected_lang",
+    key = "selected_style",
     index = 0
 )
 
