@@ -50,6 +50,7 @@ def generate_translation(input_text):
     for chunk in chat.stream(messages):
         answ += chunk.content
         info_placeholder.info(answ)
+    st.info(messages)
 
 
 
